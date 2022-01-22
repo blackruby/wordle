@@ -14,13 +14,13 @@
   </center>
   <div id="pie">
     <table id="teclado"></table>
-    &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;
     <button class="boton-color" onclick="nuevo()"><i class="material-icons">autorenew</i></button>
-    &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp;
     <button class="boton-color" style="width: 18px;" onclick="nuevoTamPal(-1)"><i class="material-icons" style="margin-left: -11px;">keyboard_arrow_down</i></button>
     <div id="d_tampal" class="celda" style="font-weight: bold;">5</div>
     <button class="boton-color" style="width: 18px;" onclick="nuevoTamPal(1)"><i class="material-icons" style="margin-left: -11px;">keyboard_arrow_up</i></button>
-    &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp;
     <button class="boton-color" onclick="resuelve(false)"><i class="material-icons">visibility</i></button>
     &nbsp; &nbsp; &nbsp; &nbsp;
     <button class="boton" onclick="comprueba()"><i class="material-icons">done</i></button>
@@ -33,7 +33,6 @@
     user-select: none;
     font-family: Arial, Helvetica, sans-serif;
   }
-  td {text-align: center;}
   #cabeza::-webkit-scrollbar {display: none;}
   #cabeza {
     overflow: auto;
@@ -92,8 +91,8 @@
     border-radius: 5px;
   }
   .muerto {
-    color: white;
-    background-color: green;
+    color: white !important;
+    background-color: green !important;
   }
   .herido {
     color: white;
@@ -152,6 +151,7 @@
   function nuevo() {
     tampal = d_tampal.textContent;
     $("#tablero").html("");
+    $(".tecla").removeClass("agua muerto herido");
     nueva_fila();
 
     dicN = dic.filter(function(p) {return p.length == tampal});
@@ -199,7 +199,8 @@
     
     for (var i = 0; i < tampal; i++) {
       if (pu[i] == pal[i]) {
-        $(inp[i]).addClass('Muerto');
+        $(inp[i]).addClass('muerto');
+        $("#t_" + pu[i].toUpperCase()).addClass('muerto');
         pal[i] = null;
       }
     }
@@ -213,10 +214,12 @@
       if (!pal[i]) continue;
       var il = pal.indexOf(pu[i]);
       if (il >= 0) {
-        $(inp[i]).addClass('Herido');
+        $(inp[i]).addClass('herido');
+        $("#t_" + pu[i].toUpperCase()).addClass('herido');
         pal[il] = ".";
       } else {
-        $(inp[i]).addClass('Agua');
+        $(inp[i]).addClass('agua');
+        $("#t_" + pu[i].toUpperCase()).addClass('agua');
       }
     }
 
@@ -230,6 +233,7 @@
   $("#bs").on("click", b_s);
 
   $("body").on("keydown", function(e) {
+    if (e.altKey || e.ctrlKey) return;
     e.preventDefault();
     var c = e.keyCode;
     if (c == 8) b_s();
