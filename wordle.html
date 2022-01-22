@@ -212,14 +212,15 @@
 
     for (var i = 0; i < tampal; i++) {
       if (!pal[i]) continue;
+      var t = $("#t_" + pu[i].toUpperCase());
       var il = pal.indexOf(pu[i]);
       if (il >= 0) {
         $(inp[i]).addClass('herido');
-        $("#t_" + pu[i].toUpperCase()).addClass('herido');
+        t.addClass('herido');
         pal[il] = ".";
       } else {
         $(inp[i]).addClass('agua');
-        $("#t_" + pu[i].toUpperCase()).addClass('agua');
+        if (!t.hasClass("herido")) t.addClass('agua');
       }
     }
 
