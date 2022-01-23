@@ -272,11 +272,16 @@
   $(".tecla").on("click", function(e) {letra(this.id[2]);});
   $("#bs").on("click", b_s);
   $("#tablero").on("click", ".casilla", function(e) {
-    var i = inp.index(this);
-    if (i >= 0) {
-      $(inp[inpx]).removeClass("activo");
-      inpx = i;
-      $(inp[inpx]).addClass("activo");
+    if (isNaN(inpx)) {
+      var c = $(".casilla");
+      if (c.index(this) >= c.length - tampal) window.open("https://dle.rae.es/" + palabra, "dlrae", "width=600, height=500");
+    } else {
+      var i = inp.index(this);
+      if (i >= 0) {
+        $(inp[inpx]).removeClass("activo");
+        inpx = i;
+        $(inp[inpx]).addClass("activo");
+      }
     }
   });
 
