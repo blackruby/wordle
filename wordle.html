@@ -152,8 +152,9 @@
   }
 
   function nueva_fila() {
+    intentos++;
     var htm = "<tr>";
-    for (var c = 0; c < tampal; c++) htm += "<td><div class='celda casilla'></div></td>";
+    for (var c = 0; c < tampal; c++) htm += `<td><div id="c_${intentos}_${c}" class="celda casilla"></div></td>`;
     $("#tablero").append(htm + "</tr>");
     inp = $(".casilla").slice(-tampal);
     inpx = 0;
@@ -167,6 +168,7 @@
     tampal = d_tampal.textContent;
     $("#tablero").html("");
     $(".tecla").removeClass("agua muerto herido");
+    intentos = 0;
     nueva_fila();
 
     var tini = new Date();
@@ -281,6 +283,11 @@
         $(inp[inpx]).removeClass("activo");
         inpx = i;
         $(inp[inpx]).addClass("activo");
+      } else {
+        if ($(this).hasClass("muerto"))
+          inp[this.id.split("_")[2]].textContent = this.textContent;
+        else if ($(this).hasClass("herido"))
+          inp[inpx].textContent = this.textContent;
       }
     }
   });
