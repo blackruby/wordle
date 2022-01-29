@@ -6,60 +6,73 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-  <div id=res></div>
   <center>
     <div id="cabeza">
       <table id="tablero"></table>
     </div>
   </center>
   <div id="pie">
-    <table id="teclado"></table>
-    <label id="reloj">00:00</label>
-    &nbsp; &nbsp;
-    <button class="boton-color" onclick="nuevo()"><i class="material-icons">autorenew</i></button>
-    &nbsp; &nbsp;
-    <button class="boton-color" style="width: 18px;" onclick="nuevoTamPal(-1)"><i class="material-icons" style="margin-left: -11px;">keyboard_arrow_down</i></button>
-    <div id="d_tampal" style="font-weight: bold;">5</div>
-    <button class="boton-color" style="width: 18px;" onclick="nuevoTamPal(1)"><i class="material-icons" style="margin-left: -11px;">keyboard_arrow_up</i></button>
-    &nbsp; &nbsp;
-    <button class="boton-color" onclick="resuelve(false)"><i class="material-icons">visibility</i></button>
-    &nbsp; &nbsp;
-    <button class="boton" onclick="comprueba()"><i class="material-icons">done</i></button>
+    <table id="teclado">
+    <tr style="height: 40px;">
+      <td id="reloj" colspan=2>00:00</td>
+      <td onclick="moveLeft()"><i class="material-icons" style="cursor: pointer;">arrow_left</i></td>
+      <td><div id="t_" class="tecla_s tecla"></div></td>
+      <td colspan=2><button class="boton-color"><i id="i_menu" class="material-icons">more_horiz</i></button></td>
+      <td><div id="t_" class="tecla_s tecla"></div></td>
+      <td onclick="moveRight()"><i class="material-icons" style="cursor: pointer;">arrow_right</i></td>
+      <td colspan=2><button class="boton" onclick="comprueba()"><i class="material-icons">subdirectory_arrow_left</i></button> </td>
+    </tr>
+  </table>
+  </div>
+
+  <div id="d_menu" class="menu float">
+    <ul class="menu-ul">
+      <li class="menu-li" onClick="resuelve(false)"><i class="material-icons menu-icon">visibility</i>Resolver</li>
+      <li class="menu-li" onClick="nuevo()"><i class="material-icons menu-icon">autorenew</i>Nuevo</li>
+      <li class="menu-li" onClick="nuevoTamPal()"><i class="material-icons menu-icon">settings_ethernet</i>Nº Letras: <span id="d_tampal">5</span></li>
+      <li class="menu-li" onClick="compartir()"><i class="material-icons menu-icon">share</i>Compartir</li>
+      <li class="menu-li" onClick="ayuda()"><i class="material-icons menu-icon">help</i>Ayuda</li>
+    </ul>
+  </div>
+
+  <div id="d_numletras" class="float">
+    <table>
+      <tr><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+      <tr><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+      <tr><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+      <tr><td>15</td><td>16</td><td>17</td><td>18</td></tr>
+      <tr><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+    </table>
+  </div>
+  <div id="d_ayuda" class="float">
+    En construcción
   </div>
 </body>
 
 <style>
+  td {
+    text-align: center;
+  }
   * {box-sizing:border-box;}
   body {
     user-select: none;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
   }
   #cabeza::-webkit-scrollbar {display: none;}
   #cabeza {
+    padding-top: 5px;
     overflow: auto;
     background-color: #e3e3e3;
   }
   #pie {
     position: fixed;
-    bottom: 7px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    padding-bottom: 5px;
-  }
-  #d_tampal {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    font-size: 17px;
-    border: 1px solid #a3a3a3;
-    border-radius: 5px;
-    display: inline-block;
-    vertical-align: top;
   }
   #tablero {
-    margin-top: 7px;
     padding: 0;
     border-collapse: collapse;
     overflow: auto;
@@ -80,7 +93,7 @@
     border-collapse: collapse;
     margin-bottom: 7px;
   }
-  .tecla {
+  .tecla_s {
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -102,6 +115,7 @@
     border-radius: 5px;
   }
   .boton-color {
+    width: 40px;
     cursor: pointer;
     background-color: blue;
     color: white;
@@ -130,6 +144,65 @@
   @keyframes blinkingBackground{
     50% {border-color: blue;}
   }
+
+  .menu {
+    position: absolute;
+    left: 50%;
+    bottom: 45px;
+    transform: translate(-50%);
+    display: none;
+    background-color: #d3d3d3;
+  }
+
+  .menu-ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .menu-li {
+    padding: 0px 16px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+  }
+
+  .menu-li:hover {
+    background-color: gray;
+  }
+
+  .menu-icon {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  #d_numletras {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d3d3d3;
+    display: none;
+  }
+  #d_numletras td {
+    border-collapse: collapse;
+    border: 1px solid grey;
+    font-size: 40;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+  }
+  #d_ayuda {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    display: none;
+    background-color: #d3d3d3;
+    opacity: 92%;
+  }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -138,14 +211,14 @@
   var teclas ="QWERTYUIOPASDFGHJKLÑZXCVBNM";
   var htm = "<tr>";
   for (var i = 0; i < 27; i++) {
-    htm += "<td><div id='t_" + teclas[i] + "' class='tecla'>" + teclas[i] + "</div></td>";
+    htm += "<td><div id='t_" + teclas[i] + "' class='tecla_s tecla'>" + teclas[i] + "</div></td>";
     if (teclas[i] == "P" || teclas[i] == "Ñ") htm += "</tr><tr>";
-    if (teclas[i] == "Ñ") htm += "<td></td>";
+    if (teclas[i] == "Ñ") htm += "<td><div class='tecla_s' style='background-color: green;' onclick='muertos()'></div></td>";
   }
   htm += "<td colspan=2 style='text-align: center'><div id='bs'><i class='material-icons'>backspace</i></div>";
-  $("#teclado").append(htm + "</tr>");
+  $("#teclado").prepend(htm + "</tr>");
 
-  function redim() {$(cabeza).height(window.innerHeight - pie.clientHeight - 20);}
+  function redim() {$(cabeza).height(window.innerHeight - pie.clientHeight - 10);}
   $(window).resize(redim);
   redim();
 
@@ -205,6 +278,8 @@
       reloj.textContent = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
     }, 1000);
 
+    $(".float").css("display", "none");
+
     console.log(palabra);
   };
 
@@ -223,26 +298,37 @@
   }
 
   function resuelve(res) {
+    $(".float").css("display", "none");
+
     if (isNaN(inpx)) return;
+
     clearInterval(interv);
     for (var i = 0; i < tampal; i++) {
       inp[i].textContent = palabra[i].toUpperCase();
       $(inp[i]).addClass(res ? "muerto" : "pista");
     }
     $(inp[inpx]).removeClass("activo");
+    $(".tecla").removeData();
     inp = $();
     inpx = NaN;
   }
 
+  function fadeInp() {
+    $(inp).fadeOut(350, function() {$(inp).fadeIn(350)});
+  }
+
   function comprueba() {
     if (isNaN(inpx)) return;
-    for (var l of inp) if (l.textContent == "") return;
+    for (var l of inp) if (l.textContent == "") {
+      fadeInp();
+      return;
+    }
 
     var pu = "";
     for (var l of inp) pu += l.textContent.toLowerCase();
 
     if (!palok(pu)) {
-      $(inp).fadeOut(350, function() {$(inp).fadeIn(350)});
+      fadeInp();
       return;
     }
     
@@ -251,7 +337,10 @@
     for (var i = 0; i < tampal; i++) {
       if (pu[i] == pal[i]) {
         $(inp[i]).addClass('muerto');
-        $("#t_" + pu[i].toUpperCase()).addClass('muerto');
+        var t = $("#t_" + pu[i].toUpperCase());
+        t.addClass('muerto');
+        if (t.data("p") == undefined) t.data("p", [i]);
+        else if (!t.data("p").includes(i)) t.data("p").push(i);
         pal[i] = null;
       }
     }
@@ -279,6 +368,24 @@
     nueva_fila();
   }
 
+  function focoLibre() {
+    for (var i = inpx; i < inpx + tampal; i++) {
+      if (inp[i % tampal].textContent == "") {
+        $(inp[inpx]).removeClass("activo");
+        $(inp[inpx = i % tampal]).addClass("activo");
+        return;
+      }
+    }
+  }
+
+  function muertos() {
+    for (var t of $(".tecla")) {
+      var a = $(t).data("p");
+      if (a) for (var i of a) inp[i].textContent = t.id[2];
+    }
+    focoLibre();
+  }
+
   function letra(l) {
     if (inpx < tampal) {
       $(inp[inpx]).removeClass("activo");
@@ -294,12 +401,32 @@
     }
   }
 
+  function moveLeft() {
+    if (inpx > 0) {
+      $(inp[inpx]).removeClass("activo");
+      $(inp[--inpx]).addClass("activo");
+    }
+  }
+
+  function moveRight() {
+    if (inpx < tampal-1) {
+      $(inp[inpx]).removeClass("activo");
+      $(inp[++inpx]).addClass("activo");
+    }
+  }
+
+  function rae(th) {
+    var pal = "";
+    var rc = th.id.split("_");
+    for (var c = 0; c < tampal; c++) pal += $(`#c_${rc[1]}_${c}`).text();
+    window.open("https://dle.rae.es/" + pal.toLocaleLowerCase(), "dlrae", "width=600, height=500");
+  }
+
   $(".tecla").on("click", function(e) {letra(this.id[2]);});
   $("#bs").on("click", b_s);
   $("#tablero").on("click", ".casilla", function(e) {
     if (isNaN(inpx)) {
-      var c = $(".casilla");
-      if (c.index(this) >= c.length - tampal) window.open("https://dle.rae.es/" + palabra, "dlrae", "width=600, height=500");
+      rae(this);
     } else {
       var i = inp.index(this);
       if (i >= 0) {
@@ -307,12 +434,30 @@
         inpx = i;
         $(inp[inpx]).addClass("activo");
       } else {
-        if ($(this).hasClass("muerto"))
-          inp[this.id.split("_")[2]].textContent = this.textContent;
-        else if ($(this).hasClass("herido"))
+        if ($(this).hasClass("muerto")) {
+          var i = this.id.split("_")[2];
+          inp[i].textContent = this.textContent;
+          if (i == inpx) focoLibre();
+        } else if ($(this).hasClass("herido")) {
           inp[inpx].textContent = this.textContent;
+          focoLibre();
+        } else rae(this);
       }
     }
+  }).on("contextmenu", ".casilla", function(e) {
+    e.preventDefault();
+    var i = inp.index(this);
+    if (i >= 0) {
+      $(inp[inpx]).removeClass("activo");
+      inpx = i;
+      $(this).addClass("activo");
+      this.textContent = "";
+    }
+  });
+
+  $("#d_numletras").on("click", "td", function(e) {
+    d_tampal.textContent = this.textContent;
+    d_numletras.style.display = "none";
   });
 
   $("body").on("keydown", function(e) {
@@ -320,14 +465,34 @@
     e.preventDefault();
     var c = e.keyCode;
     if (c == 8) b_s();
+    else if (c == 37) moveLeft();
+    else if (c == 39) moveRight();
     else if (c == 13) comprueba();
+    else if (c == 32) letra('');
     else if (c > 64 && c < 91 || c == 192) letra(c == 192 ? 'Ñ' : e.key.toUpperCase());
   });
 
-  function nuevoTamPal(f) {
-    var v = parseInt(d_tampal.textContent) + f;
-    if (v < 2) v = 2; else if (v > 23) v = 23;
-    d_tampal.textContent = v;
+  $("#cabeza, #pie").on("click", function(e) {
+    if (e.target.id == "i_menu") {
+      if ($(d_menu).css("display") == "none") {
+        $(".float").css("display", "none");
+        d_menu.style.display = "block";
+        return;
+      }
+    }
+    $(".float").css("display", "none");
+  });
+
+  function nuevoTamPal() {
+    d_numletras.style.display = "block";
+  }
+
+  function compartir() {
+  }
+
+  function ayuda() {
+    $(".float").css("display", "none");
+    d_ayuda.style.display = "block";
   }
 
 dic = `a
