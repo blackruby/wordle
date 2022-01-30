@@ -45,14 +45,54 @@
     </table>
   </div>
   <div id="d_ayuda" class="float">
-    En construcción
+    <center><h3>Iñaki - Wordle</h3></center>
+    <p>
+    El propósito del juego es adivinar una palabra que se nos propone. Para ello hay que poner
+    una palabra en las casillas y pulsar <em>Enter</em>. Si la palabra parpadea significa que
+    no es válida; bien porque no está completa o porque no existe en el diccionario.<br>
+    Las palabras que se nos propondrán nunca serán plurales ni conjugaciones verbales, aunque
+    sí se admitirán plurales para las palabras que proponga el jugador.
+    </p>
+    Una vez aceptada la palabra, cada casilla se iluminará de un color con el siguiente significado:
+    <table>
+      <tr><td><b>Gris:</b></td><td>La letra no está en la palabra.</td></tr>
+      <tr><td><b>Verde:</b></td><td>La letra está en la palabra en esa posición.</td></tr>
+      <tr><td><b>Amarillo:</b></td><td>La letra está en la palabra, pero no en esa posición.</td></tr>
+    </table>
+    La casilla con el borde parpadeando es la que tiene el foco (la que recibirá la letra que
+    pulsemos).<br>
+    Al pulsar (click izquierdo) en una casilla de la fila activa haremos que adquiera
+    el foco.<br>
+    Si pulsamos prolongadamente (click derecho) sobre una casilla de la fila activa, su contenido
+    será vaciado.<br>
+    Al pulsar en una casilla de una fila con palabras ya evaluadas el comportamiento dependerá del
+    estado (color) que tenga:
+    <table>
+      <tr><td><b>Gris:</b></td><td>Se mostrará el significado de la palabra.</td></tr>
+      <tr><td><b>Verde:</b></td><td>La letra se copiará en su misma posición en la fila activa.</td></tr>
+      <tr><td><b>Amarillo:</b></td><td>La letra se copiará en la casilla que tenga el foco.</td></tr>
+    </table>
+    <p>
+    El juego concluye cuando se adivina la palabra (todas las casillas en verde) o cuando se 
+    elige la opción <em>Resolver</em> del menú (todas las casillas en rojo). En este caso, al pulsar
+    sobre cualquier casilla del tablero, se mostrará la definición de la palabra correspondiente
+    a la fila a la que pertenece la casilla pulsada.
+    </p>
+    Las teclas/controles especiales en la parte inferior del teclado tienen el siguiente significado:
+    <table>
+      <tr><td><div class='tecla_s' style='background-color: green'></div></td><td>Pone todas las letras acertadas hasta el momento en sus casillas correspondientes en la fila activa.</td></tr>
+      <tr><td><i class='material-icons'>backspace</i></td><td>Borra el contenido de la casilla anterior a la que tiene el foco.</td></tr>
+      <tr><td style="color: gray;">mm:ss</td><td>Temporizador indicando el tiempo que llevamos empleado en la resolución.</td></tr>
+      <tr><td><i class='material-icons'>arrow_left</i></td><td>Mueve el foco a la casilla de la izquierda.</td></tr>
+      <tr><td><div class='tecla_s'></div></td><td>Vacía el contenido de la casilla que tiene el foco.</td></tr>
+      <tr><td><i class='material-icons'>more_horiz</i></td><td>Despliega el menú de opciones.</td></tr>
+      <tr><td><i class='material-icons'>arrow_right</i></td><td>Mueve el foco a la casilla de la derecha.</td></tr>
+      <tr><td><i class='material-icons'>subdirectory_arrow_left</i></td><td>(Enter) Evalúa la palabra escrita.</td></tr>
+    </table>
   </div>
 </body>
 
 <style>
-  td {
-    text-align: center;
-  }
   * {box-sizing:border-box;}
   body {
     user-select: none;
@@ -92,6 +132,7 @@
     padding: 0;
     border-collapse: collapse;
     margin-bottom: 7px;
+    text-align: center;
   }
   .tecla_s {
     width: 30px;
@@ -192,16 +233,28 @@
     font-weight: bold;
     padding: 10px;
     cursor: pointer;
+    text-align: right;
   }
   #d_ayuda {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
+    top: 0px;
+    bottom: 47px;
+    transform: translate(-50%);
+    padding: 15px 20px;
+    text-align: justify;
     display: none;
+    overflow-y: auto;
     background-color: #d3d3d3;
-    opacity: 92%;
+  }
+  #d_ayuda table {
+    margin: 0.5em 0;
+  }
+  h3 {
+    margin: 0.5em 0;
+  }
+  p {
+    margin: 0.5em 0;
   }
 </style>
 
@@ -491,7 +544,7 @@
   }
 
   function ayuda() {
-    $(".float").css("display", "none");
+    d_ayuda.style.width = Math.min(window.innerWidth - 2, 700);
     d_ayuda.style.display = "block";
   }
 
