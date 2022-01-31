@@ -47,11 +47,11 @@
   <div id="d_ayuda" class="float">
     <center><h3>Iñaki - Wordle</h3></center>
     <p>
-    El propósito del juego es adivinar una palabra que se nos propone. Para ello hay que poner
+    El propósito del juego es adivinar una palabra oculta que se nos propone. Para ello hay que poner
     una palabra en las casillas y pulsar <em>Enter</em>. Si la palabra parpadea significa que
-    no es válida; bien porque no está completa o porque no existe en el diccionario.<br>
+    no es válida; bien porque no está completa o porque no existe en el diccionario.
     Las palabras que se nos propondrán nunca serán plurales ni conjugaciones verbales, aunque
-    sí se admitirán plurales para las palabras que proponga el jugador.
+    sí se admitirán plurales para las palabras que proponga el jugador con el fin de ir acumulando pistas.
     </p>
     Una vez aceptada la palabra, cada casilla se iluminará de un color con el siguiente significado:
     <table>
@@ -88,6 +88,14 @@
       <tr><td><i class='material-icons'>more_horiz</i></td><td>Despliega el menú de opciones.</td></tr>
       <tr><td><i class='material-icons'>arrow_right</i></td><td>Mueve el foco a la casilla de la derecha.</td></tr>
       <tr><td><i class='material-icons'>subdirectory_arrow_left</i></td><td>(Enter) Evalúa la palabra escrita.</td></tr>
+    </table>
+    Al desplegar el menú tendremos disponibles las siguientes opciones:
+    <table>
+      <tr><td><i class='material-icons'>visibility</i></td><td>Resolver</td><td>Muestra la palabra oculta con fondo rojo y finaliza la partida.</td></tr>
+      <tr><td><i class='material-icons'>autorenew</i></td><td>Nuevo</td><td>Comienza una nueva partida.</td></tr>
+      <tr><td><i class='material-icons'>settings_ethernet</i></td><td>Nº Letras</td><td>Nos permite elegir el número de letras que tendrá la palabra oculta al iniciar una nueva partida.</td></tr>
+      <tr><td><i class='material-icons'>share</i></td><td>Compartir</td><td>Genera un resumen de la partida copiándolo al portapapeles para poder compartirlo con otros jugadores. Se genera un enlace para retar a otros jugadores a resolver la misma palabra.</td></tr>
+      <tr><td><i class='material-icons'>help</i></td><td>Ayuda</td><td>Muestra esta ayuda.</td></tr>
     </table>
   </div>
 </body>
@@ -240,6 +248,8 @@
     left: 50%;
     top: 0px;
     bottom: 47px;
+    width: 100%;
+    max-width: 700px;
     transform: translate(-50%);
     padding: 15px 20px;
     text-align: justify;
@@ -544,7 +554,6 @@
   }
 
   function ayuda() {
-    d_ayuda.style.width = Math.min(window.innerWidth - 2, 700);
     d_ayuda.style.display = "block";
   }
 
