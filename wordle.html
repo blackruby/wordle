@@ -4,7 +4,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="wordle.min.css?49">
+  <link rel="stylesheet" href="wordle.min.css?69">
 </head>
 <body>
   <center>
@@ -47,7 +47,14 @@
   </div>
 
   <div id="d_compartir" class="float">
-    <div id="dd_compartir"></div>
+    <table>
+      <tr><td>Nº Letras</td><td id="t_nl"></td></tr>
+      <tr><td>Intentos</td><td id="t_in"></td></tr>
+      <tr><td>Tiempo</td><td id="t_ti"></td></tr>
+      <tr><td>Puntos</td><td id="t_pu"></td></tr>
+      <tr><td>Cod. Reto</td><td id="t_re"></td></tr>
+    </table>
+    <p id="p_tab"></p>
     <p id="p_link"></p>
     <img id="i_what" src="whatsapp.png" width="40">
   </div>
@@ -59,8 +66,8 @@
     El propósito del juego es adivinar una palabra oculta que se nos propone. Para ello hay que introducir
     una palabra en las casillas y pulsar <em>Enter</em>. Si la palabra parpadea significa que
     no es válida; bien porque no está completa o porque no existe en el diccionario.
-    Las palabras que se nos propondrán nunca serán plurales ni conjugaciones verbales, aunque
-    sí se admitirán plurales para las palabras que proponga el jugador con el fin de ir acumulando pistas.
+    No se admiten ni se propondrán plurales ni conjugaciones verbales, salvo que estén recogidos en
+    el diccionario.
     </p>
     Una vez aceptada la palabra, cada casilla se iluminará de un color con el siguiente significado:
     <table>
@@ -103,7 +110,7 @@
       <tr><td><i class='material-icons'>visibility</i></td><td>Resolver</td><td>Muestra la palabra oculta con fondo rojo y finaliza la partida.</td></tr>
       <tr><td><i class='material-icons'>autorenew</i></td><td>Nuevo</td><td>Comienza una nueva partida.</td></tr>
       <tr><td><i class='material-icons'>settings_ethernet</i></td><td>Nº Letras</td><td>Nos permite elegir el número de letras que tendrá la palabra oculta al iniciar una nueva partida.</td></tr>
-      <tr><td><i class='material-icons'>share</i></td><td>Compartir</td><td>Genera un resumen de la partida copiándolo al portapapeles para poder compartirlo con otros jugadores. Se crea un enlace para retar a otros jugadores a resolver la misma palabra.</td></tr>
+      <tr><td><i class='material-icons'>share</i></td><td>Compartir</td><td>Genera un resumen de la partida y una puntuación (hasta 5 estrellas) copiándolo al portapapeles para poder compartirlo con otros jugadores. Se crea un enlace para retar a otros jugadores a resolver la misma palabra.</td></tr>
       <tr><td><i class='material-icons'>help</i></td><td>Ayuda</td><td>Muestra esta ayuda.</td></tr>
     </table>
   </div>
@@ -111,6 +118,6 @@
   <div id="d_popup"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="wordle.min.js?59"></script>
+  <script src="wordle.min.js?79"></script>
 </body>
 </html>
