@@ -4,7 +4,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="wordle.min.css?107">
+  <link rel="stylesheet" href="wordle.min.css?111">
 </head>
 <body>
   <center>
@@ -101,7 +101,7 @@
     Las teclas/controles especiales en la parte inferior del teclado tienen el siguiente significado:
     <table>
       <tr><td><div class='tecla_s' style='background-color: green'></div></td><td>Pone todas las letras acertadas hasta el momento en sus casillas correspondientes en la fila activa.</td></tr>
-      <tr><td><i class='material-icons'>backspace</i></td><td>Borra el contenido de la casilla anterior a la que tiene el foco.</td></tr>
+      <tr><td><i class='material-icons'>backspace</i></td><td>Si la casilla con el foco contiene una letra, la borra, si no, borra el contenido de la casilla anterior y le cede el foco.</td></tr>
       <tr><td style="color: gray;">mm:ss</td><td>Temporizador indicando el tiempo que llevamos empleado en la resolución.</td></tr>
       <tr><td><i class='material-icons'>arrow_left</i></td><td>Mueve el foco a la casilla de la izquierda.</td></tr>
       <tr><td><div class='tecla_s'></div></td><td>Vacía el contenido de la casilla que tiene el foco.</td></tr>
@@ -115,7 +115,7 @@
       <tr><td><i class='material-icons'>autorenew</i></td><td>Nuevo</td><td>Comienza una nueva partida.</td></tr>
       <tr><td><i class='material-icons'>settings_ethernet</i></td><td>Nº Letras</td><td>Nos permite elegir el número de letras que tendrá la palabra oculta al iniciar una nueva partida.</td></tr>
       <tr><td><i class='material-icons'>share</i></td><td>Compartir</td><td>Genera un resumen de la partida y una puntuación (hasta 5 estrellas) copiándolo al portapapeles para poder compartirlo con otros jugadores. Se crea un enlace para retar a otros jugadores a resolver la misma palabra.</td></tr>
-      <tr><td><i class='material-icons'>assessment</i></td><td>Estadísticas</td><td>Muestra el número de partidas jugadas y su distrbución en función de los puntos obtenidos..</td></tr>
+      <tr><td><i class='material-icons'>assessment</i></td><td>Estadísticas</td><td>Muestra el número de partidas jugadas y su distrbución en función de los puntos obtenidos.</td></tr>
       <tr><td><i class='material-icons'>help</i></td><td>Ayuda</td><td>Muestra esta ayuda.</td></tr>
     </table>
   </div>
@@ -123,6 +123,6 @@
   <div id="d_popup"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="wordle.min.js?117"></script>
+  <script src="wordle.min.js?121"></script>
 </body>
 </html>
