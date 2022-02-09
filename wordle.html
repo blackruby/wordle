@@ -4,7 +4,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="wordle.min.css?81">
+  <link rel="stylesheet" href="wordle.min.css?107">
 </head>
 <body>
   <center>
@@ -33,6 +33,7 @@
       <li class="menu-li" onClick="nuevo()"><i class="material-icons menu-icon">autorenew</i>Nuevo</li>
       <li class="menu-li" onClick="nuevoTamPal()"><i class="material-icons menu-icon">settings_ethernet</i>Nº Letras: <span id="d_tampal"></span></li>
       <li class="menu-li" onClick="compartir()"><i class="material-icons menu-icon">share</i>Compartir</li>
+      <li class="menu-li" onClick="stats()"><i class="material-icons menu-icon">assessment</i>Estadísticas</li>
       <li class="menu-li" onClick="ayuda()"><i class="material-icons menu-icon">help</i>Ayuda</li>
     </ul>
   </div>
@@ -60,6 +61,8 @@
     <img id="i_what" src="whatsapp.png" width="40">
   </div>
   <textarea id="t_compartir"></textarea>
+
+  <div id="d_stats" class="float"><table></table><p id="p_s_1"></p><p id="p_s_2">La columna de la izquierda representa las partidas en las que se ha pedido la solución.</p></div>
 
   <div id="d_ayuda" class="float">
     <center><h3>Iñaki - Wordle</h3><div style="font-size: small;">© Iñaki Lanchares</div></center>
@@ -112,6 +115,7 @@
       <tr><td><i class='material-icons'>autorenew</i></td><td>Nuevo</td><td>Comienza una nueva partida.</td></tr>
       <tr><td><i class='material-icons'>settings_ethernet</i></td><td>Nº Letras</td><td>Nos permite elegir el número de letras que tendrá la palabra oculta al iniciar una nueva partida.</td></tr>
       <tr><td><i class='material-icons'>share</i></td><td>Compartir</td><td>Genera un resumen de la partida y una puntuación (hasta 5 estrellas) copiándolo al portapapeles para poder compartirlo con otros jugadores. Se crea un enlace para retar a otros jugadores a resolver la misma palabra.</td></tr>
+      <tr><td><i class='material-icons'>assessment</i></td><td>Estadísticas</td><td>Muestra el número de partidas jugadas y su distrbución en función de los puntos obtenidos..</td></tr>
       <tr><td><i class='material-icons'>help</i></td><td>Ayuda</td><td>Muestra esta ayuda.</td></tr>
     </table>
   </div>
@@ -119,6 +123,6 @@
   <div id="d_popup"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="wordle.min.js?91"></script>
+  <script src="wordle.min.js?117"></script>
 </body>
 </html>
