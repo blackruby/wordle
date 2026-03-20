@@ -1,0 +1,69 @@
+<svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .tile { fill: #121213; stroke: #3a3a3c; stroke-width: 2; }
+    .correct { fill: #538d4e; }
+    .present { fill: #b59f3b; }
+    .absent { fill: #3a3a3c; }
+    .text { fill: white; font-family: Arial, sans-serif; font-size: 18px; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+
+  <!-- Fondo -->
+  <rect width="100%" height="100%" fill="#121213"/>
+
+  <!-- Cuadrícula centrada -->
+  <g transform="translate(30, 20) scale(0.9)">
+    <!-- Fila 1 -->
+    <rect class="tile present" x="0" y="0" width="50" height="50"/>
+    <rect class="tile correct" x="60" y="0" width="50" height="50"/>
+    <rect class="tile absent" x="120" y="0" width="50" height="50"/>
+    <rect class="tile absent" x="180" y="0" width="50" height="50"/>
+    <rect class="tile absent" x="240" y="0" width="50" height="50"/>
+
+    <text class="text" x="25" y="25">A</text>
+    <text class="text" x="85" y="25">Ñ</text>
+    <text class="text" x="145" y="25">E</text>
+    <text class="text" x="205" y="25">J</text>
+    <text class="text" x="265" y="25">O</text>
+
+    <!-- Fila 2 -->
+    <rect class="tile correct" x="0" y="60" width="50" height="50"/>
+    <rect class="tile correct" x="60" y="60" width="50" height="50"/>
+    <rect class="tile correct" x="120" y="60" width="50" height="50"/>
+    <rect class="tile correct" x="180" y="60" width="50" height="50"/>
+    <rect class="tile correct" x="240" y="60" width="50" height="50"/>
+
+    <text class="text" x="25" y="85">I</text>
+    <text class="text" x="85" y="85">Ñ</text>
+    <text class="text" x="145" y="85">A</text>
+    <text class="text" x="205" y="85">K</text>
+    <text class="text" x="265" y="85">I</text>
+
+    <!-- Fila 3 -->
+    <rect class="tile" x="0" y="120" width="50" height="50"/>
+    <rect class="tile" x="60" y="120" width="50" height="50"/>
+    <rect class="tile" x="120" y="120" width="50" height="50"/>
+    <rect class="tile" x="180" y="120" width="50" height="50"/>
+    <rect class="tile" x="240" y="120" width="50" height="50"/>
+
+    <!-- Fila 4 -->
+    <rect class="tile" x="0" y="180" width="50" height="50"/>
+    <rect class="tile" x="60" y="180" width="50" height="50"/>
+    <rect class="tile" x="120" y="180" width="50" height="50"/>
+    <rect class="tile" x="180" y="180" width="50" height="50"/>
+    <rect class="tile" x="240" y="180" width="50" height="50"/>
+
+    <!-- Fila 5 -->
+    <rect class="tile" x="0" y="240" width="50" height="50"/>
+    <rect class="tile" x="60" y="240" width="50" height="50"/>
+    <rect class="tile" x="120" y="240" width="50" height="50"/>
+    <rect class="tile" x="180" y="240" width="50" height="50"/>
+    <rect class="tile" x="240" y="240" width="50" height="50"/>
+
+    <!-- Fila 6 -->
+    <rect class="tile" x="0" y="300" width="50" height="50"/>
+    <rect class="tile" x="60" y="300" width="50" height="50"/>
+    <rect class="tile" x="120" y="300" width="50" height="50"/>
+    <rect class="tile" x="180" y="300" width="50" height="50"/>
+    <rect class="tile" x="240" y="300" width="50" height="50"/>
+  </g>
+</svg>
