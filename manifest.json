@@ -2,7 +2,7 @@
   "name": "Palabras",
   "short_name": "Palabras",
   "description": "Encuentra la palabra oculta",
-  "start_url": "./index.html",
+  "start_url": "./wordle.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0f0f1a",
